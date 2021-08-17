@@ -1,0 +1,23 @@
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3.24
+  - 7.4.0
+
+env:
+    global:
+        - XDEBUG_MODE=coverage
+
+before_script:
+  - composer selfupdate
+  - composer install --dev --prefer-dist
+  
+script:
+  - php vendor/bin/phpunit src/Tests/ --coverage-clover coverage.xml
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
