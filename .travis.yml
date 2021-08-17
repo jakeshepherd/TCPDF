@@ -17,7 +17,7 @@ before_script:
   - composer install --dev --prefer-dist
   
 script:
-  - php vendor/bin/phpunit src/Tests/ --coverage-clover coverage.xml
+  - php vendor/bin/phpunit --coverage-clover coverage.xml
 
 after_success:
     - bash <(curl -s https://codecov.io/bash)
